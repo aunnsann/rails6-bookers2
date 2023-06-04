@@ -12,12 +12,12 @@
   <body>
     <%= render 'layouts/header' %>
       <main>
-        <div class="flash-notifications">
-        <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: key) %>
-        <% end %>
+       <div class="body">
+        <div class="container">
+        <p id="notice"><%= notice %></p>
+        <%= yield %>
         </div>
-       <%= yield %>
+      </div>
       </main>
     <%= render 'layouts/footer' %>
   </body>

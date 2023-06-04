@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+ before_action :authenticate_user!
  before_action :is_matching_login_user, only: [:edit, :update]
 
   def show
@@ -19,9 +20,8 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to users_path(@user), notice: "You have updated user successfully."
+      redirect_to user_path(@user), notice: "You have updated user successfully."
     else
-      @users = User.all
       render "edit"
     end
   end
