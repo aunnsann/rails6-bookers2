@@ -3,7 +3,6 @@ class BooksController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def show
-    @user = current_user
     @book = Book.find(params[:id])
     @user = @book.user
     @book_new = Book.new
