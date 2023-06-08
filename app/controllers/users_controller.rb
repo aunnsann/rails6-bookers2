@@ -6,6 +6,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new
+    @following_users = @user.following_user
+    @follower_users = @user.follower_user
   end
 
   def index
@@ -26,10 +28,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def follows
+    user = User.find(params[:id])
+    @users = user.following_user
+  end
+
+  def followers
+    user = User.find(params[:id])
+    @user = user.follower_user
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :introduction, :profile_image)
+    params.require(:user).permit(:name, :introduction, :profile_image, )
   end
 
   def is_matching_login_user
