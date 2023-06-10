@@ -7,16 +7,6 @@ class Book < ApplicationRecord
   validates :body,presence:true,length:{maximum:200}
 
 
-  def get_image
-   if image.attached?
-     image
-   else
-     'airport.jpg'
-   end
-  end
-  def favorited_by?(user)
-    favorites.exists?(user_id: user.id)
-  end
   def self.looks(search, word)
     if search == "perfect_match"
       @book = Book.where("title LIKE?","#{word}")
@@ -29,5 +19,16 @@ class Book < ApplicationRecord
     else
       @book = Book.all
     end
+  end
+
+  def get_image
+   if image.attached?
+     image
+   else
+     'airport.jpg'
+   end
+  end
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
   end
 end
