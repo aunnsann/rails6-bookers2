@@ -27,7 +27,7 @@
                <%= render "book_comments/comment", book: @book,book_comment: @book_comment %>
               </div>
             </td>
-            <td>
+            <td id="favorite_buttons_<%= @book.id %>">
               <%= render "favorites/favorites_btn", book: @book %>
             </td>
         </tr>
